@@ -1,0 +1,66 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - Hallo
+      - hey
+      - hello
+      - hi
+      - guten morgen
+      - moin
+      - servus
+
+  - intent: goodbye
+    examples: |
+      - tschüss
+      - ciao
+      - bis dann
+      - machs gut
+      - auf wiedersehen
+
+  - intent: inform_weather
+    examples: |
+      - Wie ist das Wetter in [Berlin](GPE) gerade?
+      - Was macht das Wetter heute?
+      - Regnet es heute in [München](GPE)?
+      - Zeig mir das Wetter in [Paris](GPE).
+      - Wie wird das Wetter in [Kempten](GPE)?
+      - Sag mir das Wetter.
+      - Ist das Wetter schön in [Barcelona](GPE)?
+      - Ich fahre nach [Amsterdam](GPE), wie ist das Wetter dort?
+      - Wie sind die Wetteraussichten für [Italien](GPE)?
+
+  - intent: tell_location
+    examples: |
+      - in [Berlin](GPE)
+      - für [München](GPE)
+      - [Kempten](GPE)
+      - in [Amsterdam](GPE)
+      - ich meine [Italien](GPE)
+      - für [Spanien](GPE)
+      - [Wien](GPE)
+
+  - intent: inform_generally
+    examples: |
+      - Erzähl mir mehr über [Berlin](GPE)
+      - Wie ist [London](GPE)?
+      - Zeig mir Infos zu [Amsterdam](GPE)
+      - Ich frage mich, wie [München](GPE) so ist.
+      - Kannst du mir etwas über [Graz](GPE) sagen?
+      - Infos zu [Frankreich](GPE)
+      - Ich brauche allgemeine Informationen.
+      - Hast du Infos zu [Kempten](GPE)?
+      - Was gibt es über [Wien](GPE) zu wissen?
+
+  - intent: check_activity
+    examples: |
+      - Ich muss nachher [einkaufen](activity).
+      - Wann kann ich am besten zum [Rewe](activity) gehen?
+      - Ich will zur [Hochschule](activity).
+      - Wie sieht es aus, ich muss zur [Uni](activity).
+      - Ich muss heute noch [tanken](activity).
+      - Lohnt es sich gerade, zum [Tanken](activity) nach Österreich zu fahren?
+      - Ich will zum [Supermarkt](activity).
+      - Zeig mir die Lage fürs [Einkaufen](activity) in [Kempten](GPE).
+      - Ich fahre zur [Hochschule](activity) nach [Kempten](GPE).

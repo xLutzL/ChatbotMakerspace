@@ -1,0 +1,194 @@
+version: "3.1"
+
+stories:
+  - story: "1"
+    steps:
+      - intent: inform_weather
+        entities:
+          - GPE: Kempten
+      - slot_was_set:
+        - location: Kempten
+      - action: action_weather
+      - action: utter_location
+
+  - story: "2"
+    steps:
+      - intent: inform_weather
+        entities:
+          - GPE: Stockholm
+      - slot_was_set:
+        - location: Stockholm
+      - action: action_weather
+      - action: utter_location
+
+  - story: "3"
+    steps:
+      - intent: inform_weather
+        entities:
+          - GPE: Vienna
+      - slot_was_set:
+        - location: Vienna
+      - action: action_weather
+      - action: utter_location
+
+  - story: "4"
+    steps:
+      - intent: inform_weather
+        entities:
+          - GPE: Cape Town
+      - slot_was_set:
+        - location: Cape Town
+      - action: action_weather
+      - action: utter_location
+
+  - story: "5"
+    steps:
+      - intent: inform_weather
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Madrid
+      - slot_was_set:
+        - location: Madrid
+      - action: action_weather
+      - action: utter_location
+
+  - story: "6"
+    steps:
+      - intent: inform_generally
+        entities:
+          - GPE: Vilnius
+      - slot_was_set:
+        - location: Vilnius
+      - action: action_generalinfo
+
+  - story: "7"
+    steps:
+      - intent: inform_generally
+        entities:
+          - GPE: Rome
+      - slot_was_set:
+        - location: Rome
+      - action: action_generalinfo
+
+  - story: "8"
+    steps:
+      - intent: inform_generally
+        entities:
+          - GPE: Miami
+      - slot_was_set:
+        - location: Miami
+      - action: action_generalinfo
+
+  - story: "9"
+    steps:
+      - intent: inform_generally
+        entities:
+          - GPE: Fulda
+      - slot_was_set:
+        - location: Fulda
+      - action: action_generalinfo
+
+
+  - story: "10"
+    steps:
+      - intent: inform_generally
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Munich
+      - slot_was_set:
+        - location: Munich
+      - action: action_generalinfo
+
+  - story: "11"
+    steps:
+      - intent: inform_weather
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Mumbai
+      - slot_was_set:
+        - location: Mumbai
+      - action: action_weather
+      - action: utter_location
+      - intent: inform_generally
+      - slot_was_set:
+        - location: Mumbai
+      - action: action_generalinfo
+
+  - story: "12"
+    steps:
+      - intent: inform_weather
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Amsterdam
+      - slot_was_set:
+        - location: Amsterdam
+      - action: action_weather
+      - action: utter_location
+      - intent: inform_generally
+      - slot_was_set:
+        - location: Amsterdam
+      - action: action_generalinfo
+
+  - story: "13"
+    steps:
+      - intent: inform_generally
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Munich
+      - slot_was_set:
+        - location: Munich
+      - action: action_generalinfo
+      - intent: inform_weather
+      - slot_was_set:
+        - location: Munich
+      - action: action_weather
+      - action: utter_location
+
+  - story: "14"
+    steps:
+      - intent: inform_generally
+      - action: utter_ask_location
+      - intent: tell_location
+        entities:
+          - GPE: Berlin
+      - slot_was_set:
+        - location: Berlin
+      - action: action_generalinfo
+      - intent: inform_weather
+      - slot_was_set:
+        - location: Berlin
+      - action: action_weather
+      - action: utter_location
+
+  - story: "15"
+    steps:
+      - intent: inform_weather
+        entities:
+          - GPE: Amsterdam
+      - slot_was_set:
+        - location: Amsterdam
+      - action: action_weather
+      - action: utter_location
+      - intent: inform_generally
+      - slot_was_set:
+        - location: Amsterdam
+      - action: action_generalinfo
+
+  - story: "16"
+    steps:
+      - intent: inform_generally
+        entities:
+          - GPE: Munich
+      - slot_was_set:
+        - location: Munich
+      - action: action_generalinfo
+      - intent: inform_weather
+      - slot_was_set:
+        - location: Munich
+      - action: action_weather
+      - action: utter_location

@@ -1,0 +1,47 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+
+intents:
+  - inform_weather
+  - tell_location
+  - inform_generally
+  - check_activity # <-- NEU: Für Einkaufen, Tanken, Hochschule
+  - goodbye
+  - greet
+
+entities:
+  - GPE
+  - activity # <-- NEU: Extrahiert das Vorhaben
+
+slots:
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: GPE
+  activity:      # <-- NEU: Speichert das Vorhaben
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: activity
+
+actions:
+  - action_generalinfo
+  - action_weather
+  - action_check_context # <-- NEU: Die Aktion für Node-RED
+
+responses:
+  utter_greet:
+    - text: "Hallo! Was hast du heute vor oder wie kann ich helfen?"
+  utter_ask_location:
+    - text: "Für welchen Ort genau?"
+  utter_goodbye:
+    - text: "Mach's gut!"
+    - text: "Bis zum nächsten Mal!"
+  utter_location:
+    - text: "{location} ist wirklich schön!"
