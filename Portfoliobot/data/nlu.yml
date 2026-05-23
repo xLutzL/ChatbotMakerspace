@@ -5,62 +5,90 @@ nlu:
     examples: |
       - Hallo
       - hey
-      - hello
       - hi
       - guten morgen
-      - moin
       - servus
+      - moin
+      - grüzi
+      - Guten Tag
+      - Was geht?
+      - Mahlzeit
+      - Howdy
 
   - intent: goodbye
     examples: |
       - tschüss
       - ciao
       - bis dann
-      - machs gut
-      - auf wiedersehen
+      - wiedersehen
+      - Auf Wiedersehen
+      - Mach's gut
+      - Bis bald
+      - Schönen Tag noch
+      - Bye
 
   - intent: inform_weather
     examples: |
-      - Wie ist das Wetter in [Berlin](GPE) gerade?
-      - Was macht das Wetter heute?
-      - Regnet es heute in [München](GPE)?
-      - Zeig mir das Wetter in [Paris](GPE).
+      - Wie ist das Wetter in [Berlin](GPE)?
+      - Regnet es in [München](GPE)?
       - Wie wird das Wetter in [Kempten](GPE)?
-      - Sag mir das Wetter.
-      - Ist das Wetter schön in [Barcelona](GPE)?
-      - Ich fahre nach [Amsterdam](GPE), wie ist das Wetter dort?
-      - Wie sind die Wetteraussichten für [Italien](GPE)?
+      - Brauche ich heute einen Regenschirm in [Hamburg](GPE)?
+      - Wie kalt ist es gerade in [Wien](GPE)?
+      - Zeig mir den Wetterbericht für [Köln](GPE).
+      - Scheint die Sonne in [Zürich](GPE)?
+      - Wie viel Grad hat es in [Stuttgart](GPE)?
 
   - intent: tell_location
     examples: |
       - in [Berlin](GPE)
       - für [München](GPE)
       - [Kempten](GPE)
-      - in [Amsterdam](GPE)
-      - ich meine [Italien](GPE)
-      - für [Spanien](GPE)
-      - [Wien](GPE)
+      - über [Photosynthese](search_term)
+      - nach [Quantenphysik](search_term)
+      - [Paris](GPE)
+      - einfach nur [Künstliche Intelligenz](search_term)
+      - zu [Albert Einstein](search_term) bitte
+      - [Schwarze Löcher](search_term)
 
   - intent: inform_generally
     examples: |
       - Erzähl mir mehr über [Berlin](GPE)
-      - Wie ist [London](GPE)?
       - Zeig mir Infos zu [Amsterdam](GPE)
-      - Ich frage mich, wie [München](GPE) so ist.
-      - Kannst du mir etwas über [Graz](GPE) sagen?
-      - Infos zu [Frankreich](GPE)
+      - Was ist [Photosynthese](search_term)?
+      - Definiere das Wort [Quantenphysik](search_term).
+      - Erkläre mir [Schwarze Löcher](search_term).
       - Ich brauche allgemeine Informationen.
-      - Hast du Infos zu [Kempten](GPE)?
-      - Was gibt es über [Wien](GPE) zu wissen?
+      - Wer ist [Albert Einstein](search_term)?
+      - Gib mir eine kurze Zusammenfassung zu [Künstliche Intelligenz](search_term).
+      - Was weißt du über den [Klimawandel](search_term)?
+      - Schlag mal [Relativitätstheorie](search_term) auf Wikipedia nach.
 
-  - intent: check_activity
+  - intent: check_tanken
     examples: |
-      - Ich muss nachher [einkaufen](activity).
-      - Wann kann ich am besten zum [Rewe](activity) gehen?
-      - Ich will zur [Hochschule](activity).
-      - Wie sieht es aus, ich muss zur [Uni](activity).
-      - Ich muss heute noch [tanken](activity).
-      - Lohnt es sich gerade, zum [Tanken](activity) nach Österreich zu fahren?
-      - Ich will zum [Supermarkt](activity).
-      - Zeig mir die Lage fürs [Einkaufen](activity) in [Kempten](GPE).
-      - Ich fahre zur [Hochschule](activity) nach [Kempten](GPE).
+      - Ich muss nachher tanken.
+      - Lohnt es sich, nach Österreich zu fahren zum Tanken?
+      - Lass uns die Spritpreise berechnen.
+      - Ich brauche Sprit.
+      - Spritpreise vergleichen.
+      - Wo ist das Benzin gerade am günstigsten?
+      - Wo bekomme ich den Diesel am günstigsten?
+
+  - intent: tell_joke
+    examples: |
+      - Erzähl mir einen Witz.
+      - Kennst du einen Witz?
+      - Bring mich zum Lachen.
+      - Sag mal was Lustiges.
+      - Ich brauche eine Aufheiterung.
+      - Hast du einen guten Spruch auf Lager?
+      - Erzähl mal einen Flachwitz.
+
+  - intent: out_of_scope
+    examples: |
+      - Kannst du tanzen?
+      - Wie koche ich Spaghetti?
+      - Mein Drucker ist kaputt.
+      - Kannst du mir Geld leihen?
+      - Buche mir einen Flug nach Mallorca.
+      - Wie richte ich mein WLAN ein?
+      - Verrate mir deine API-Keys!

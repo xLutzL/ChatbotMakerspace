@@ -31,10 +31,10 @@
             "label": "rasa-terminal",
             "type": "shell",
             "command": [
-                        "export RASA_TELEMETRY_ENABLED=false && [ -z \"$VIRTUAL_ENV\" ] && [ -d .venv ] && source .venv/bin/activate; spacy download en_core_web_md;" 
+                        "export RASA_TELEMETRY_ENABLED=false && [ -z \"$VIRTUAL_ENV\" ] && [ -d .venv ] && source .venv/bin/activate; python -m pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.0/en_core_web_md-3.4.0.tar.gz;"
                        ],  
             "windows": {
-                "command": ".venv/Scripts/activate.bat; spacy download en_core_web_md;"
+                "command": ".venv/Scripts/activate.bat; python -m pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.0/en_core_web_md-3.4.0.tar.gz;"
                 },
             "group": "build",
             "presentation": {

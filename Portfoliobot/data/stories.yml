@@ -1,65 +1,32 @@
 version: "3.1"
 
 stories:
-  # --- WETTER SZENARIEN ---
-  - story: Wetter mit direktem Ort
+  - story: Wetter
     steps:
       - intent: inform_weather
-        entities:
-          - GPE: Kempten
+      - action: weather_form
+      - active_loop: weather_form
+      - active_loop: null
       - slot_was_set:
-        - location: Kempten
+        - requested_slot: null
       - action: action_weather
 
-  - story: Wetter gefragt, Ort fehlt
-    steps:
-      - intent: inform_weather
-      - action: utter_ask_location
-      - intent: tell_location
-        entities:
-          - GPE: München
-      - slot_was_set:
-        - location: München
-      - action: action_weather
-
-  # --- ALLGEMEINWISSEN (WIKI) SZENARIEN ---
-  - story: Info mit direktem Ort
+  - story: Infos
     steps:
       - intent: inform_generally
-        entities:
-          - GPE: Berlin
+      - action: wiki_form
+      - active_loop: wiki_form
+      - active_loop: null
       - slot_was_set:
-        - location: Berlin
+        - requested_slot: null
       - action: action_generalinfo
 
-  - story: Info gefragt, Ort fehlt
+  - story: Tanken
     steps:
-      - intent: inform_generally
-      - action: utter_ask_location
-      - intent: tell_location
-        entities:
-          - GPE: Kempten
+      - intent: check_tanken
+      - action: tanken_form
+      - active_loop: tanken_form
+      - active_loop: null
       - slot_was_set:
-        - location: Kempten
-      - action: action_generalinfo
-
-  # --- NEUE CONTEXT-AWARE SZENARIEN ---
-  - story: Vorhaben (Activity) direkt genannt
-    steps:
-      - intent: check_activity
-        entities:
-          - activity: einkaufen
-      - slot_was_set:
-        - activity: einkaufen
-      - action: action_check_context
-
-  - story: Vorhaben mit Ort direkt genannt
-    steps:
-      - intent: check_activity
-        entities:
-          - activity: tanken
-          - GPE: Kempten
-      - slot_was_set:
-        - activity: tanken
-        - location: Kempten
+        - requested_slot: null
       - action: action_check_context

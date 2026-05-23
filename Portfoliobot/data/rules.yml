@@ -10,3 +10,66 @@ rules:
     steps:
       - intent: goodbye
       - action: utter_goodbye
+
+  # --- PFAD 1: WETTER ---
+  - rule: Aktiviere Wetter Formular
+    steps:
+      - intent: inform_weather
+      - action: weather_form
+      - active_loop: weather_form
+
+  - rule: Sende Wetter Formular ab
+    condition:
+      - active_loop: weather_form
+    steps:
+      - action: weather_form
+      - active_loop: null
+      - slot_was_set:
+        - requested_slot: null
+      - action: action_weather
+
+  # --- PFAD 2: INFOS ---
+  - rule: Aktiviere Wiki Formular
+    steps:
+      - intent: inform_generally
+      - action: wiki_form
+      - active_loop: wiki_form
+
+  - rule: Sende Wiki Formular ab
+    condition:
+      - active_loop: wiki_form
+    steps:
+      - action: wiki_form
+      - active_loop: null
+      - slot_was_set:
+        - requested_slot: null
+      - action: action_generalinfo
+
+  # --- PFAD 3: TANKEN ---
+  - rule: Aktiviere Tanken Formular
+    steps:
+      - intent: check_tanken
+      - action: tanken_form
+      - active_loop: tanken_form
+
+  - rule: Sende Formular ab
+    condition:
+      - active_loop: tanken_form
+    steps:
+      - action: tanken_form
+      - active_loop: null
+      - slot_was_set:
+        - requested_slot: null
+      - action: action_check_context
+
+  # --- PFAD 4: WITZ ---
+  - rule: Witz erzählen
+    steps:
+      - intent: tell_joke
+      - action: action_tell_joke
+
+  # --- PFAD 5: OUT OF SCOPE ---
+  - rule: Out of Scope Fallback
+    steps:
+      - intent: out_of_scope
+      - action: action_out_of_scope

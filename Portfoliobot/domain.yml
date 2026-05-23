@@ -8,40 +8,105 @@ intents:
   - inform_weather
   - tell_location
   - inform_generally
-  - check_activity # <-- NEU: Für Einkaufen, Tanken, Hochschule
+  - check_tanken
+  - tell_joke
+  - out_of_scope
   - goodbye
   - greet
 
 entities:
   - GPE
-  - activity # <-- NEU: Extrahiert das Vorhaben
+  - search_term
 
 slots:
   location:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: GPE
-  activity:      # <-- NEU: Speichert das Vorhaben
+      - type: from_text
+        conditions:
+          - active_loop: weather_form
+            requested_slot: location
+        
+  search_term:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
       - type: from_entity
-        entity: activity
+        entity: search_term
+      - type: from_entity
+        entity: GPE
+        intent: inform_generally
+      - type: from_text
+        conditions:
+          - active_loop: wiki_form
+            requested_slot: search_term
+
+  user_question:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        intent: inform_weather
+
+  tankvolumen:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: tanken_form
+            requested_slot: tankvolumen
+            
+  verbrauch:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: tanken_form
+            requested_slot: verbrauch
+
+  tanken_retries:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+forms:
+  tanken_form:
+    required_slots:
+      - tankvolumen
+      - verbrauch
+  weather_form:
+    required_slots:
+      - location
+  wiki_form:
+    required_slots:
+      - search_term
 
 actions:
-  - action_generalinfo
   - action_weather
-  - action_check_context # <-- NEU: Die Aktion für Node-RED
+  - action_generalinfo
+  - action_check_context
+  - action_tell_joke
+  - action_out_of_scope
+  - validate_tanken_form
+  - utter_ask_search_term
+  - utter_ask_location
 
 responses:
   utter_greet:
-    - text: "Hallo! Was hast du heute vor oder wie kann ich helfen?"
+    - text: "Hallo! Ich kann das Wetter checken, Infos suchen, Witze erzählen oder Tank-Kosten vergleichen. Was hast du vor?"
   utter_ask_location:
-    - text: "Für welchen Ort genau?"
+    - text: "Für welchen Ort soll ich das Wetter prüfen?"
+  utter_ask_search_term:
+    - text: "Worüber genau möchtest du etwas wissen? (Nenne mir einen Ort oder einen Begriff)"
+  utter_ask_tankvolumen:
+    - text: "Wie viele Liter passen in deinen Tank? (Bitte gib eine Zahl ein, z.B. 50)"
+  utter_ask_verbrauch:
+    - text: "Wie viel Liter verbraucht dein Auto auf 100km? (Bitte gib eine Zahl ein, z.B. 7)"
   utter_goodbye:
     - text: "Mach's gut!"
-    - text: "Bis zum nächsten Mal!"
-  utter_location:
-    - text: "{location} ist wirklich schön!"
